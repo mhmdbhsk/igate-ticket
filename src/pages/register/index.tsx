@@ -55,12 +55,21 @@ export default function Register({}: RegisterProps) {
     setIsLoading(true);
     const data = new FormData();
     data.append('file', file);
-    data.append('upload_preset', 'payment_proof_i_gate');
-    data.append('cloud_name', 'mhmdbhsk');
-    fetch('https://api.cloudinary.com/v1_1/mhmdbhsk/image/upload', {
-      method: 'post',
-      body: data,
-    })
+    data.append(
+      'upload_preset',
+      process.env.NEXT_PUBLIC_CLOUDINARY_PRESET as string
+    );
+    data.append(
+      'cloud_name',
+      process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME as string
+    );
+    fetch(
+      `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+      {
+        method: 'post',
+        body: data,
+      }
+    )
       .then((resp) => resp.json())
       .then((data) => {
         setPaymentProofUrl(data.url);
