@@ -1,21 +1,14 @@
 import axiosInstance from '@/configs/axios-interceptors';
-import { CreateTicketPayload } from '@/dto/TicketDto';
+import {
+  CreateTicketPayload,
+  CreateTicketResponse,
+  GetTicketByIdResponse,
+} from '@/dto/TicketDto';
+import { AxiosResponse } from 'axios';
 
 const TicketService = {
   getTicketsById: async (id: string) => {
-    const response = await axiosInstance({
-      url: `/${process.env.NEXT_PUBLIC_AIRTABLE_BASE}/ticket/${id}`,
-      method: 'get',
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_API_KEY}`,
-      },
-    });
-
-    return response.data;
-  },
-
-  getYearOption: async (id: string) => {
-    const response = await axiosInstance({
+    const response: AxiosResponse<GetTicketByIdResponse> = await axiosInstance({
       url: `/${process.env.NEXT_PUBLIC_AIRTABLE_BASE}/ticket/${id}`,
       method: 'get',
       headers: {
@@ -27,7 +20,7 @@ const TicketService = {
   },
 
   createTicket: async (data: CreateTicketPayload) => {
-    const response = await axiosInstance({
+    const response: AxiosResponse<CreateTicketResponse> = await axiosInstance({
       url: `/${process.env.NEXT_PUBLIC_AIRTABLE_BASE}/ticket`,
       method: 'post',
       headers: {

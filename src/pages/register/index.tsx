@@ -1,5 +1,6 @@
 import FileUpload from '@/components/FileUpload';
 import { useWindowSize } from '@/hooks/useWindowSize';
+import PhotoService from '@/services/photo';
 import TicketService from '@/services/ticket';
 import {
   Anchor,
@@ -51,8 +52,9 @@ export default function Register({}: RegisterProps) {
     }),
   });
 
-  const uploadImage = (file: File) => {
+  const uploadImage = async (file: File) => {
     setIsLoading(true);
+
     const data = new FormData();
     data.append('file', file);
     data.append(
@@ -63,19 +65,18 @@ export default function Register({}: RegisterProps) {
       'cloud_name',
       process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME as string
     );
-    fetch(
-      `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
-      {
-        method: 'post',
-        body: data,
-      }
-    )
-      .then((resp) => resp.json())
-      .then((data) => {
-        setPaymentProofUrl(data.url);
+
+    try {
+      const res = await PhotoService.uploadImage(data);
+      if (res) {
+        setPaymentProofUrl(res.url);
+        setModalOpened(false);
         setIsLoading(false);
-      })
-      .catch(() => toast.error('Upload File Gagal'));
+      }
+    } catch (error) {
+      toast.error('Upload File Gagal');
+      setIsLoading(false);
+    }
   };
 
   const handleSubmit = async (values: any) => {
