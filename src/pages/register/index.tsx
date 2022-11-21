@@ -146,15 +146,19 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              alignItems: 'center',
+              // alignItems: 'center',
               background: '#fff',
               position: 'absolute',
               bottom: -245,
               padding: 36,
               borderRadius: 16,
+              flexDirection: 'column',
+              gap: 16,
             }}
           >
-            <Text weight='bold'>Daftar</Text>
+            <Text weight='bold' size={24}>
+              Daftar
+            </Text>
             <form
               onSubmit={form.onSubmit((values) => handleSubmit(values))}
               style={{

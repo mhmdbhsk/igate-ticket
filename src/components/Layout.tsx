@@ -24,7 +24,7 @@ export default function Layout({ children, pageTitle }: LayoutProps) {
   });
 
   return (
-    <Box className='body-grain-effect'>
+    <Box className='body-grain-effect' sx={{ minHeight: '100vh' }}>
       <motion.div style={{ scaleX }} />
 
       <Container
