@@ -1,57 +1,55 @@
 import { ReactNode } from 'react';
-import { Inter } from '@next/font/google';
-import { Box, Button, Container, Text } from '@mantine/core';
-import { useWindowSize } from '@/hooks/useWindowSize';
+import { Inter, Lilita_One, Secular_One } from '@next/font/google';
+import { Box, Container } from '@mantine/core';
+import PageTransition from './PageTransition';
+import { motion, useScroll, useSpring } from 'framer-motion';
+import Header from './Header';
+import CustomSeo from './CustomSeo';
+import Footer from './Footer';
 
 const inter = Inter();
+const lilita = Lilita_One({ weight: '400' });
 
 interface LayoutProps {
   children: ReactNode;
+  pageTitle?: string;
 }
 
-export default function Layout({ children }: LayoutProps) {
-  const { isMedium } = useWindowSize();
+export default function Layout({ children, pageTitle }: LayoutProps) {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   return (
-    <Container
-      size='lg'
-      px='xs'
-      sx={{ position: 'relative' }}
-      className={inter.className}
-    >
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          left: 0,
-        }}
+    <Box className='body-grain-effect'>
+      <motion.div style={{ scaleX }} />
+
+      <Container
+        size='lg'
+        px='xs'
+        sx={{ position: 'relative' }}
+        className={(inter.className, lilita.className)}
       >
-        <Container
-          size='sm'
-          p='lg'
-          className={inter.className}
+        <CustomSeo title={pageTitle} />
+        <Header />
+        <Box
           sx={{
-            display: 'flex',
-            flexDirection: isMedium ? 'column' : 'row',
-            justifyContent: isMedium ? 'center' : 'space-between',
+            justifyContent: 'center',
             alignItems: 'center',
+            flexDirection: 'column',
+            display: 'flex',
+            gap: 16,
+            height: '100%',
           }}
         >
-          <Text weight='bold'>I-Gate</Text>
-          <Text size={12}>Informatics! Gate to the Future</Text>
-        </Container>
-      </Box>
-      <Box
-        sx={{
-          height: '100%',
-          minHeight: '100vh',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        {children}
-      </Box>
-    </Container>
+          <PageTransition>{children}</PageTransition>
+        </Box>
+      </Container>
+
+      <Footer />
+    </Box>
   );
 }

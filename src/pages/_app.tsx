@@ -3,8 +3,19 @@ import Head from 'next/head';
 import { MantineProvider } from '@mantine/core';
 import Layout from '@/components/Layout';
 import DismissableToast from '@/components/DismissableToast';
+import { AnimatePresence, LazyMotion, domAnimation } from 'framer-motion';
+import { NextPageWithSeo } from '@/types/next-page-with-seo';
+import { NextComponentType, NextPageContext } from 'next';
+import theme from '@/styles/theme';
 
-export default function App(props: AppProps) {
+type NextComponentWithSeo = NextComponentType<NextPageContext, any, {}> &
+  Partial<NextPageWithSeo>;
+
+type ExtendedAppProps<P = {}> = AppProps<P> & {
+  Component: NextComponentWithSeo;
+};
+
+export default function App(props: ExtendedAppProps) {
   const { Component, pageProps } = props;
 
   return (
@@ -17,17 +28,19 @@ export default function App(props: AppProps) {
         />
       </Head>
 
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-        theme={{
-          fontFamily: 'Inter',
-        }}
-      >
-        <Layout>
-          <DismissableToast />
-          <Component {...pageProps} />
-        </Layout>
+      <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
+        <LazyMotion features={domAnimation}>
+          <AnimatePresence
+            initial={false}
+            onExitComplete={() => window.scrollTo(0, 0)}
+            mode='wait'
+          >
+            <Layout pageTitle={Component.pageTitle as string}>
+              <DismissableToast />
+              <Component {...pageProps} />
+            </Layout>
+          </AnimatePresence>
+        </LazyMotion>
       </MantineProvider>
     </>
   );

@@ -10,14 +10,8 @@ export default class _Document extends Document {
     return (
       <Html>
         <Head />
-        <body
-          style={{
-            background: 'radial-gradient(#fff,#f5f5f5)',
-          }}
-        >
-          <Main />
-          <NextScript />
-        </body>
+        <Main />
+        <NextScript />
       </Html>
     );
   }

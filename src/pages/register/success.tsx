@@ -1,7 +1,8 @@
+import { NextComponentWithSeo } from '@/types/next-page-with-seo';
 import { Box, Button, Text } from '@mantine/core';
 import { useRouter } from 'next/router';
 
-export default function RegisterSuccess() {
+const RegisterSuccess: NextComponentWithSeo = () => {
   const router = useRouter();
 
   return (
@@ -34,4 +35,9 @@ export default function RegisterSuccess() {
       </Button>
     </Box>
   );
-}
+};
+
+RegisterSuccess.title = 'RegisterSuccess';
+RegisterSuccess.pageTitle = 'RegisterSuccess';
+
+export default RegisterSuccess;

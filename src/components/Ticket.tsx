@@ -4,7 +4,7 @@ import { useWindowSize } from '@/hooks/useWindowSize';
 import { Box, Grid, Text } from '@mantine/core';
 import QRCode from 'react-qr-code';
 
-function CardTicket(data: any) {
+function Ticket(data: any) {
   const { isMedium } = useWindowSize();
 
   const ticketData = data?.data;
@@ -32,7 +32,7 @@ function CardTicket(data: any) {
         <Grid.Col xs={12} sm={8} md={8} lg={8} sx={{ padding: 0 }}>
           <Box
             sx={{
-              borderLeft: !isMedium ? '2px dashed #f5f5f5' : 'none',
+              borderBottom: isMedium ? '2px dashed #f5f5f5' : 'none',
               display: 'flex',
               flexDirection: 'column',
               gap: 16,
@@ -109,4 +109,4 @@ function CardTicket(data: any) {
   );
 }
 
-export default CardTicket;
+export default Ticket;

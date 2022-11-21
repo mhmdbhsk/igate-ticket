@@ -1,7 +1,9 @@
 import FileUpload from '@/components/FileUpload';
+import Jumbotron from '@/components/Jumbotron';
 import { useWindowSize } from '@/hooks/useWindowSize';
 import PhotoService from '@/services/photo';
 import TicketService from '@/services/ticket';
+import { NextPageWithSeo } from '@/types/next-page-with-seo';
 import {
   Anchor,
   Box,
@@ -25,7 +27,7 @@ import toast from 'react-hot-toast';
 
 interface RegisterProps {}
 
-export default function Register({}: RegisterProps) {
+const Register: NextPageWithSeo = ({}: RegisterProps) => {
   const { isSmall } = useWindowSize();
   const theme = useMantineTheme();
   const [modalOpened, setModalOpened] = useState<boolean>(false);
@@ -109,17 +111,7 @@ export default function Register({}: RegisterProps) {
   };
 
   return (
-    <Box
-      sx={{
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column',
-        display: 'flex',
-        gap: 16,
-        height: '100%',
-        minHeight: '100vh',
-      }}
-    >
+    <Box>
       <Modal
         opened={modalOpened}
         onClose={() => setModalOpened(false)}
@@ -143,131 +135,161 @@ export default function Register({}: RegisterProps) {
         </List>
       </Modal>
 
-      <form
-        onSubmit={form.onSubmit((values) => handleSubmit(values))}
-        style={{
-          flexDirection: 'column',
-          display: 'flex',
-          gap: 16,
-        }}
-      >
-        <TextInput
-          withAsterisk
-          required
-          label='Nama Lengkap'
-          placeholder='Masukkan nama lengkap kamu'
-          {...form.getInputProps('name')}
-        />
-        <TextInput
-          withAsterisk
-          required
-          label='Email'
-          placeholder='Masukkan email kamu'
-          {...form.getInputProps('email')}
-        />
-        <Select
-          required
-          label='Angkatan'
-          placeholder='Pilih tahun angkatan kamu'
-          data={[
-            { value: 2019, label: '2019' },
-            { value: 2020, label: '2020' },
-            { value: 2021, label: '2021' },
-            { value: 2022, label: '2022' },
-            { value: 'Lainnya', label: 'Lainnya' },
-          ]}
-          {...form.getInputProps('year')}
-        />
-
+      <Jumbotron>
         <Box
           sx={{
             display: 'flex',
-            flexDirection: 'column',
-            gap: 16,
+            justifyContent: 'center',
           }}
         >
           <Box
             sx={{
               display: 'flex',
-              alignItems: isSmall ? 'start' : 'center',
-              gap: isSmall ? 8 : 0,
-              justifyContent: 'space-between',
-              flexDirection: isSmall ? 'column' : 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+              background: '#fff',
+              position: 'absolute',
+              bottom: -245,
+              padding: 36,
+              borderRadius: 16,
             }}
           >
-            <Text size={14} weight={500}>
-              Upload bukti pembayaran
-            </Text>
-            <Button
-              fullWidth={isSmall}
-              variant='light'
-              radius='xl'
-              sx={{ fontSize: 12 }}
-              onClick={() => setModalOpened(true)}
-            >
-              Cara Pembayaran
-            </Button>
-          </Box>
-
-          {!isLoading && paymentProofUrl ? (
-            <Box
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
+            <Text weight='bold'>Daftar</Text>
+            <form
+              onSubmit={form.onSubmit((values) => handleSubmit(values))}
+              style={{
                 flexDirection: 'column',
+                display: 'flex',
                 gap: 16,
               }}
             >
-              <Image
-                src={paymentProofUrl as string}
-                alt='Payment proof'
-                sx={{ maxWidth: 200 }}
+              <TextInput
+                withAsterisk
+                required
+                label='Nama Lengkap'
+                placeholder='Masukkan nama lengkap kamu'
+                {...form.getInputProps('name')}
               />
-              <Button
-                fullWidth={isSmall}
-                color='red'
-                variant='light'
-                radius='xl'
-                sx={{ fontSize: 12 }}
-                onClick={() => setPaymentProofUrl(null)}
+              <TextInput
+                withAsterisk
+                required
+                label='Email'
+                placeholder='Masukkan email kamu'
+                {...form.getInputProps('email')}
+              />
+              <Select
+                required
+                label='Angkatan'
+                placeholder='Pilih tahun angkatan kamu'
+                data={[
+                  { value: 2019, label: '2019' },
+                  { value: 2020, label: '2020' },
+                  { value: 2021, label: '2021' },
+                  { value: 2022, label: '2022' },
+                  { value: 'Lainnya', label: 'Lainnya' },
+                ]}
+                {...form.getInputProps('year')}
+              />
+
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 16,
+                }}
               >
-                Hapus
-              </Button>
-            </Box>
-          ) : (
-            <FileUpload
-              loading={isLoading}
-              onDrop={(files: FileWithPath[]) => {
-                setError('');
-                uploadImage(files[0]);
-              }}
-              onReject={() => setError('File tidak didukung')}
-            />
-          )}
-          {error && (
-            <Text size={12} color='red'>
-              {error}
-            </Text>
-          )}
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: isSmall ? 'start' : 'center',
+                    gap: isSmall ? 8 : 0,
+                    justifyContent: 'space-between',
+                    flexDirection: isSmall ? 'column' : 'row',
+                  }}
+                >
+                  <Text size={14} weight={500}>
+                    Upload bukti pembayaran
+                  </Text>
+                  <Button
+                    fullWidth={isSmall}
+                    variant='light'
+                    radius='xl'
+                    sx={{ fontSize: 12 }}
+                    onClick={() => setModalOpened(true)}
+                  >
+                    Cara Pembayaran
+                  </Button>
+                </Box>
+
+                {!isLoading && paymentProofUrl ? (
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      flexDirection: 'column',
+                      gap: 16,
+                    }}
+                  >
+                    <Image
+                      src={paymentProofUrl as string}
+                      alt='Payment proof'
+                      sx={{ maxWidth: 200 }}
+                    />
+                    <Button
+                      fullWidth={isSmall}
+                      color='red'
+                      variant='light'
+                      radius='xl'
+                      sx={{ fontSize: 12 }}
+                      onClick={() => setPaymentProofUrl(null)}
+                    >
+                      Hapus
+                    </Button>
+                  </Box>
+                ) : (
+                  <FileUpload
+                    loading={isLoading}
+                    onDrop={(files: FileWithPath[]) => {
+                      setError('');
+                      uploadImage(files[0]);
+                    }}
+                    onReject={() => setError('File tidak didukung')}
+                  />
+                )}
+                {error && (
+                  <Text size={12} color='red'>
+                    {error}
+                  </Text>
+                )}
+              </Box>
+
+              <Checkbox
+                required
+                mt='md'
+                label={`Saya setuju dengan syarat dan ketentuan yang berlaku`}
+                {...form.getInputProps('termsOfService', { type: 'checkbox' })}
+              />
+
+              <Group position='center' mt='md'>
+                <Button
+                  radius='xl'
+                  variant='light'
+                  type='submit'
+                  disabled={!form.isValid() || paymentProofUrl === null}
+                >
+                  Daftar
+                </Button>
+              </Group>
+            </form>
+          </Box>
         </Box>
-
-        <Checkbox
-          required
-          mt='md'
-          label={`Saya setuju dengan syarat dan ketentuan yang berlaku`}
-          {...form.getInputProps('termsOfService', { type: 'checkbox' })}
-        />
-
-        <Group position='right' mt='md'>
-          <Button
-            type='submit'
-            disabled={!form.isValid() || paymentProofUrl === null}
-          >
-            Submit
-          </Button>
-        </Group>
-      </form>
+      </Jumbotron>
     </Box>
   );
-}
+};
+
+Register.title = 'Register';
+Register.pageTitle = 'Register';
+
+export default Register;
