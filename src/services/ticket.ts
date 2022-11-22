@@ -34,6 +34,7 @@ const TicketService = {
               name: data.name,
               email: data.email,
               year: data.year,
+              nim: data.nim,
               paymentProof: [
                 {
                   url: data.paymentProof,

@@ -3,6 +3,7 @@ export type CreateTicketPayload = {
   email: string;
   paymentProof: string;
   year: string;
+  nim: string;
 };
 
 export type CreateTicketResponse = {

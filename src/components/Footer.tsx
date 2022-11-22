@@ -8,16 +8,17 @@ import {
 
 const useStyles = createStyles((theme) => ({
   footer: {
-    marginTop: 16,
     borderTop: `.5px solid ${theme.colors.gray[2]}`,
+    height: 96,
   },
 
   inner: {
+    height: '100%',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingTop: theme.spacing.xl,
-    paddingBottom: theme.spacing.xl,
+    paddingTop: theme.spacing.lg,
+    paddingBottom: theme.spacing.lg,
 
     [theme.fn.smallerThan('xs')]: {
       flexDirection: 'column',
@@ -41,12 +42,6 @@ export default function Footer() {
           <LogoIcon />
         </Box>
         <Group spacing={0} className={classes.links} position='right' noWrap>
-          <ActionIcon size='lg'>
-            <IconBrandTwitter size={18} stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon size='lg'>
-            <IconBrandYoutube size={18} stroke={1.5} />
-          </ActionIcon>
           <ActionIcon size='lg'>
             <IconBrandInstagram size={18} stroke={1.5} />
           </ActionIcon>

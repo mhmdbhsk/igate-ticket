@@ -1,4 +1,5 @@
 import { BackgroundImage, Box, BoxProps } from '@mantine/core';
+import Header from './Header';
 
 type JumbotronProps = {
   children: React.ReactNode;
@@ -10,11 +11,12 @@ const Jumbotron = ({ children, fullHeight, ...rest }: JumbotronProps) => {
     <BackgroundImage
       component={Box}
       src='/images/BackgroundLayer.svg'
-      h={{ base: 250, xs: 300, sm: 400, lg: 500 }}
       sx={{ width: '100vw' }}
+      className='body-grain-effect'
       {...rest}
     >
-      {children}
+      <Header />
+      <Box>{children}</Box>
     </BackgroundImage>
   );
 };

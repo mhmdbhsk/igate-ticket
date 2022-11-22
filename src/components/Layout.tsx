@@ -24,17 +24,21 @@ export default function Layout({ children, pageTitle }: LayoutProps) {
   });
 
   return (
-    <Box className='body-grain-effect' sx={{ minHeight: '100vh' }}>
+    <Box>
       <motion.div style={{ scaleX }} />
 
       <Container
         size='lg'
         px='xs'
-        sx={{ position: 'relative' }}
+        sx={{
+          position: 'relative',
+          minHeight: 'calc(100vh - 96px)',
+          height: '100%',
+        }}
         className={(inter.className, lilita.className)}
       >
         <CustomSeo title={pageTitle} />
-        <Header />
+        {/* <Header /> */}
         <Box
           sx={{
             justifyContent: 'center',

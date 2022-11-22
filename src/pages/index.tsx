@@ -24,6 +24,7 @@ const Home: NextComponentWithSeo<HomeProps> = () => {
             justifyContent: 'center',
             alignItems: 'center',
             position: 'relative',
+            padding: '64px 0px 128px ',
           }}
         >
           <Box
@@ -69,7 +70,7 @@ const Home: NextComponentWithSeo<HomeProps> = () => {
         </Box>
       </Jumbotron>
 
-      <FAQ />
+      {/* <FAQ /> */}
     </Box>
   );
 };

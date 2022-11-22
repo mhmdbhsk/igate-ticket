@@ -13,6 +13,7 @@ import {
   Image,
   List,
   Modal,
+  NumberInput,
   Select,
   Text,
   TextInput,
@@ -42,6 +43,7 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
       name: '',
       year: '',
       termsOfService: false,
+      nim: '',
     },
     validate: (values) => ({
       name: values.name.length < 2 ? 'Nama terlalu pendek' : null,
@@ -50,6 +52,10 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
         : 'Masukkan email yang valid',
       year:
         values.year.length < 1 ? 'Pilih tahun angkatan terlebih dahulu' : null,
+      nim:
+        values?.nim?.length < 14
+          ? 'Nomor Induk Mahasiswa kurang dari 14 digit, silahkan cek kembali'
+          : null,
       termsOfService: values.termsOfService === false,
     }),
   });
@@ -82,12 +88,14 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
   };
 
   const handleSubmit = async (values: any) => {
+    setIsLoading(true);
     if (paymentProofUrl === null) {
       setError('Mohon unggah bukti pembayaran');
       return;
     }
 
     const data = {
+      nim: values?.nim?.toString(),
       name: values.name,
       email: values.email,
       year: values.year.toString(),
@@ -102,10 +110,12 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
           router.push('/register/success');
           toast.success('Pendaftaran berhasil');
           setPaymentProofUrl(null);
+          setIsLoading(false);
         }
       } catch (error) {
         setPaymentProofUrl(null);
         console.log(error);
+        setIsLoading(false);
       }
     }
   };
@@ -125,12 +135,21 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
         <Text size={14} sx={{ marginBottom: 4 }}>
           Kirim pembayaran ke nomor/rekening yang tertera di bawah ini
         </Text>
+
         <List size='sm'>
           <List.Item>
-            <Text> Bank Mandiri 1239412323 - a.n. Test</Text>
+            <Text>Mandiri No rekening : 1260010227527 a.n Salsabila Tuada</Text>
           </List.Item>
           <List.Item>
-            <Text>ShopeePay/Dana/Gopay 0892313124123 - a.n. Test</Text>
+            <Text>Dana ( 089648297621 ) a.n Salsabila Tuada</Text>
+            <Image src='/images/method-dana.jpg' alt='Metode PembayaranDana' />
+          </List.Item>
+          <List.Item>
+            <Text>Shopeepay ( 089648297621 ) a.n Salsabila Tuada</Text>
+            <Image
+              src='/images/method-shopeepay.jpg'
+              alt='Metode PembayaranDana'
+            />
           </List.Item>
         </List>
       </Modal>
@@ -140,16 +159,14 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
           sx={{
             display: 'flex',
             justifyContent: 'center',
+            paddingBottom: 24,
           }}
         >
           <Box
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              // alignItems: 'center',
               background: '#fff',
-              position: 'absolute',
-              bottom: -245,
               padding: 36,
               borderRadius: 16,
               flexDirection: 'column',
@@ -174,11 +191,28 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
                 placeholder='Masukkan nama lengkap kamu'
                 {...form.getInputProps('name')}
               />
+              <NumberInput
+                withAsterisk
+                required
+                label='Nomor Induk Mahasiswa ( NIM )'
+                placeholder='Masukkan NIM kamu'
+                {...form.getInputProps('nim')}
+              />
               <TextInput
                 withAsterisk
                 required
                 label='Email'
                 placeholder='Masukkan email kamu'
+                styles={(theme) => ({
+                  input: {
+                    ':focus': {
+                      input: {
+                        borderColor:
+                          theme.colors.violet[theme.fn.primaryShade()],
+                      },
+                    },
+                  },
+                })}
                 {...form.getInputProps('email')}
               />
               <Select
@@ -220,6 +254,7 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
                     radius='xl'
                     sx={{ fontSize: 12 }}
                     onClick={() => setModalOpened(true)}
+                    color='violet'
                   >
                     Cara Pembayaran
                   </Button>
@@ -271,6 +306,7 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
               <Checkbox
                 required
                 mt='md'
+                color='violet'
                 label={`Saya setuju dengan syarat dan ketentuan yang berlaku`}
                 {...form.getInputProps('termsOfService', { type: 'checkbox' })}
               />
@@ -281,6 +317,8 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
                   variant='light'
                   type='submit'
                   disabled={!form.isValid() || paymentProofUrl === null}
+                  color='violet'
+                  loading={isLoading}
                 >
                   Daftar
                 </Button>

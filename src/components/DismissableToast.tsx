@@ -1,4 +1,4 @@
-import { ActionIcon, Box, Button } from '@mantine/core';
+import { ActionIcon, Box, Button, Text } from '@mantine/core';
 import { toast, ToastBar, Toaster } from 'react-hot-toast';
 import { IconX } from '@tabler/icons';
 
@@ -26,7 +26,7 @@ export default function DismissableToast() {
                 }}
               >
                 {icon}
-                {message}
+                <Text>{message}</Text>
                 {t.type !== 'loading' && (
                   <ActionIcon onClick={() => toast.dismiss(t.id)}>
                     <IconX size={16} color='#000' />

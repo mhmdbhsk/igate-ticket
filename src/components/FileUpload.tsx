@@ -10,6 +10,7 @@ export default function FileUpload(props: FileUploadProps) {
 
   return (
     <Dropzone
+      color='violet'
       onDrop={onDrop as any}
       onReject={onReject}
       maxSize={1 * 1024 ** 2}

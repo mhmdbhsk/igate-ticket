@@ -9,14 +9,7 @@ export default function Header() {
   const router = useRouter();
 
   return (
-    <Box
-      sx={{
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        left: 0,
-      }}
-    >
+    <Box sx={{ height: 96 }}>
       <Container
         size='sm'
         p='lg'
@@ -27,7 +20,10 @@ export default function Header() {
           alignItems: 'center',
         })}
       >
-        <Box sx={{ width: 100 }}>
+        <Box
+          sx={{ width: 100, cursor: 'pointer' }}
+          onClick={() => router.push('/')}
+        >
           <LogoIcon />
         </Box>
       </Container>

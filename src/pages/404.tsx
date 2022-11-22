@@ -1,10 +1,11 @@
 import { NextComponentWithSeo } from '@/types/next-page-with-seo';
-import { Anchor, Box, Text } from '@mantine/core';
-import Link from 'next/link';
+import { Box, Button, Text } from '@mantine/core';
+import { useRouter } from 'next/router';
 
 type NotFoundProps = {} & NextComponentWithSeo;
 
 const NotFound: NextComponentWithSeo<NotFoundProps> = () => {
+  const router = useRouter();
   return (
     <Box>
       <Box
@@ -20,9 +21,9 @@ const NotFound: NextComponentWithSeo<NotFoundProps> = () => {
         </Text>
         <Text align='center'>Halaman Tidak Ditemukan</Text>
 
-        <Anchor component={Link} href='/' sx={{ textAlign: 'center' }}>
+        <Button color='violet' radius='xl' onClick={() => router.push('/')}>
           Kembali ke beranda
-        </Anchor>
+        </Button>
       </Box>
     </Box>
   );
