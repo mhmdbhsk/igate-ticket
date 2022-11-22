@@ -1,4 +1,4 @@
-import { Title, Accordion, createStyles, Container } from '@mantine/core';
+import { Title, Accordion, createStyles, Container, Text } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -7,12 +7,20 @@ const useStyles = createStyles((theme) => ({
     minHeight: 650,
   },
 
+  root: {
+    backgroundColor: theme.colors.gray[0],
+    borderRadius: theme.radius.lg,
+  },
+
   title: {
     marginBottom: theme.spacing.xl * 1.5,
   },
 
   item: {
-    backgroundColor: theme.colors.brand4[0],
+    backgroundColor:
+      theme.colorScheme === 'dark'
+        ? theme.colors.dark[6]
+        : theme.colors.gray[0],
     border: '1px solid transparent',
     position: 'relative',
     zIndex: 0,
@@ -20,8 +28,7 @@ const useStyles = createStyles((theme) => ({
 
     '&[data-active]': {
       transform: 'scale(1.03)',
-      backgroundColor: theme.colors.brand6[0],
-
+      backgroundColor: theme.white,
       boxShadow: theme.shadows.md,
       borderColor: theme.colors.gray[2],
       borderRadius: theme.radius.md,
@@ -61,9 +68,10 @@ export default function FAQ({ data }: FAQProps) {
       <Accordion
         sx={{ maxWidth: 500 }}
         mx='auto'
-        variant='separated'
+        variant='filled'
         defaultValue='customization'
         classNames={classes}
+        className={classes.root}
       >
         {data.map((item) => (
           <Accordion.Item
@@ -71,8 +79,14 @@ export default function FAQ({ data }: FAQProps) {
             value={item.id.toString()}
             key={item.id}
           >
-            <Accordion.Control>{item.question}</Accordion.Control>
-            <Accordion.Panel>{item.answer}</Accordion.Panel>
+            <Accordion.Control>
+              <Text weight='bold' size={14}>
+                {item.question}
+              </Text>
+            </Accordion.Control>
+            <Accordion.Panel>
+              <Text size={14}>{item.answer}</Text>
+            </Accordion.Panel>
           </Accordion.Item>
         ))}
       </Accordion>
