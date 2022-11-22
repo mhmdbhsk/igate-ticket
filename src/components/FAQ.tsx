@@ -1,4 +1,4 @@
-import { Container, Title, Accordion, createStyles, Box } from '@mantine/core';
+import { Title, Accordion, createStyles, Container } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -12,60 +12,70 @@ const useStyles = createStyles((theme) => ({
   },
 
   item: {
-    borderRadius: theme.radius.md,
-    marginBottom: theme.spacing.lg,
+    backgroundColor: theme.colors.brand4[0],
+    border: '1px solid transparent',
+    position: 'relative',
+    zIndex: 0,
+    transition: 'transform 150ms ease',
 
-    border: `1px solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
-    }`,
+    '&[data-active]': {
+      transform: 'scale(1.03)',
+      backgroundColor: theme.colors.brand6[0],
+
+      boxShadow: theme.shadows.md,
+      borderColor: theme.colors.gray[2],
+      borderRadius: theme.radius.md,
+      zIndex: 1,
+    },
+  },
+
+  chevron: {
+    '&[data-rotate]': {
+      transform: 'rotate(-90deg)',
+    },
   },
 }));
 
-const placeholder =
-  'It can’t help but hear a pin drop from over half a mile away, so it lives deep in the mountains where there aren’t many people or Pokémon.It was born from sludge on the ocean floor. In a sterile environment, the germs within its body can’t multiply, and it dies.It has no eyeballs, so it can’t see. It checks its surroundings via the ultrasonic waves it emits from its mouth.';
+type FAQProps = {
+  data: {
+    id: number;
+    answer: string | React.ReactNode;
+    question: string;
+  }[];
+};
 
-export default function FAQ() {
+export default function FAQ({ data }: FAQProps) {
   const { classes } = useStyles();
+
   return (
-    <Box className={classes.wrapper}>
-      <Title align='center' className={classes.title}>
-        Answer and Question
+    <Container className={classes.wrapper}>
+      <Title
+        align='center'
+        className={classes.title}
+        sx={{ fontFamily: '__Lilita_One_4c05dc' }}
+        id='faq'
+      >
+        Pertanyaan Yang Sering Diajukan
       </Title>
 
-      <Accordion variant='separated'>
-        <Accordion.Item className={classes.item} value='reset-password'>
-          <Accordion.Control>How can I reset my password?</Accordion.Control>
-          <Accordion.Panel>{placeholder}</Accordion.Panel>
-        </Accordion.Item>
-
-        <Accordion.Item className={classes.item} value='another-account'>
-          <Accordion.Control>
-            Can I create more that one account?
-          </Accordion.Control>
-          <Accordion.Panel>{placeholder}</Accordion.Panel>
-        </Accordion.Item>
-
-        <Accordion.Item className={classes.item} value='newsletter'>
-          <Accordion.Control>
-            How can I subscribe to monthly newsletter?
-          </Accordion.Control>
-          <Accordion.Panel>{placeholder}</Accordion.Panel>
-        </Accordion.Item>
-
-        <Accordion.Item className={classes.item} value='credit-card'>
-          <Accordion.Control>
-            Do you store credit card information securely?
-          </Accordion.Control>
-          <Accordion.Panel>{placeholder}</Accordion.Panel>
-        </Accordion.Item>
-
-        <Accordion.Item className={classes.item} value='payment'>
-          <Accordion.Control>
-            What payment systems to you work with?
-          </Accordion.Control>
-          <Accordion.Panel>{placeholder}</Accordion.Panel>
-        </Accordion.Item>
+      <Accordion
+        sx={{ maxWidth: 500 }}
+        mx='auto'
+        variant='separated'
+        defaultValue='customization'
+        classNames={classes}
+      >
+        {data.map((item) => (
+          <Accordion.Item
+            className={classes.item}
+            value={item.id.toString()}
+            key={item.id}
+          >
+            <Accordion.Control>{item.question}</Accordion.Control>
+            <Accordion.Panel>{item.answer}</Accordion.Panel>
+          </Accordion.Item>
+        ))}
       </Accordion>
-    </Box>
+    </Container>
   );
 }

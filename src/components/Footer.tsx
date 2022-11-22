@@ -1,5 +1,12 @@
-import { LogoIcon } from '@/assets';
-import { createStyles, Container, Group, ActionIcon, Box } from '@mantine/core';
+import { InstagramIcon, LogoIcon, WhatsAppIcon } from '@/assets';
+import {
+  createStyles,
+  Container,
+  Group,
+  ActionIcon,
+  Box,
+  Tooltip,
+} from '@mantine/core';
 import {
   IconBrandTwitter,
   IconBrandYoutube,
@@ -19,16 +26,6 @@ const useStyles = createStyles((theme) => ({
     alignItems: 'center',
     paddingTop: theme.spacing.lg,
     paddingBottom: theme.spacing.lg,
-
-    [theme.fn.smallerThan('xs')]: {
-      flexDirection: 'column',
-    },
-  },
-
-  links: {
-    [theme.fn.smallerThan('xs')]: {
-      marginTop: theme.spacing.md,
-    },
   },
 }));
 
@@ -41,15 +38,37 @@ export default function Footer() {
         <Box sx={{ width: 100 }}>
           <LogoIcon />
         </Box>
-        <Group spacing={0} className={classes.links} position='right' noWrap>
-          <ActionIcon
-            size='lg'
-            component='a'
-            href='https://www.instagram.com/igate.2022/'
-            target='_blank'
-          >
-            <IconBrandInstagram size={18} stroke={1.5} />
-          </ActionIcon>
+        <Group spacing={0} position='right' noWrap>
+          <Tooltip label='Instagram I-Gate 2022'>
+            <ActionIcon
+              size='lg'
+              component='a'
+              href='https://www.instagram.com/igate.2022/'
+              target='_blank'
+            >
+              <InstagramIcon />
+            </ActionIcon>
+          </Tooltip>
+          <Tooltip label='Narahubung 1'>
+            <ActionIcon
+              size='lg'
+              component='a'
+              href='https://wa.me/62'
+              target='_blank'
+            >
+              <WhatsAppIcon />
+            </ActionIcon>
+          </Tooltip>
+          <Tooltip label='Narahubung 2'>
+            <ActionIcon
+              size='lg'
+              component='a'
+              href='https://wa.me/62'
+              target='_blank'
+            >
+              <WhatsAppIcon />
+            </ActionIcon>
+          </Tooltip>
         </Group>
       </Container>
     </div>

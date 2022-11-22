@@ -1,3 +1,4 @@
+import { LogoIcon } from '@/assets';
 import { BackgroundImage, Box, Text } from '@mantine/core';
 import { ImageResponse } from '@vercel/og';
 
@@ -15,10 +16,11 @@ export default function handler(req: any, res: any) {
     (
       <BackgroundImage
         component={Box}
-        src='/images/BackgroundLayer.svg'
+        src='/images/BackgroundLayer.png'
         h='100%'
         sx={{ width: '100vw' }}
       >
+        <LogoIcon />
         <div
           style={{
             display: 'flex',

@@ -10,7 +10,7 @@ const Jumbotron = ({ children, fullHeight, ...rest }: JumbotronProps) => {
   return (
     <BackgroundImage
       component={Box}
-      src='/images/BackgroundLayer.svg'
+      src='/images/BackgroundLayer.png'
       sx={{ width: '100vw' }}
       className='body-grain-effect'
       {...rest}

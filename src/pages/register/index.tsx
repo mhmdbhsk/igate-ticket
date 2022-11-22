@@ -23,6 +23,8 @@ import { FileWithPath } from '@mantine/dropzone';
 import { useForm } from '@mantine/form';
 import { useRouter } from 'next/router';
 
+import { IconArrowLeft } from '@tabler/icons';
+
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
@@ -159,171 +161,227 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
           sx={{
             display: 'flex',
             justifyContent: 'center',
-            paddingBottom: 24,
+            alignItems: 'center',
+            paddingBottom: 48,
           }}
         >
           <Box
             sx={{
+              width: 'max-content',
               display: 'flex',
               justifyContent: 'center',
-              background: '#fff',
-              padding: 36,
-              borderRadius: 16,
               flexDirection: 'column',
-              gap: 16,
+              alignItems: 'center',
+              paddingBottom: 24,
+              margin: 24,
+              marginBottom: 0,
             }}
           >
-            <Text weight='bold' size={24}>
-              Daftar
-            </Text>
-            <form
-              onSubmit={form.onSubmit((values) => handleSubmit(values))}
-              style={{
-                flexDirection: 'column',
+            <Box
+              sx={{
                 display: 'flex',
+                justifyContent: 'start',
+                width: '100%',
+                flexDirection: 'column',
+                marginBottom: 24,
+              }}
+            >
+              <Box
+                sx={{
+                  cursor: 'pointer',
+                  borderRadius: 16,
+                  background: 'white',
+                  padding: '8px 16px',
+                  width: 'max-content',
+                  display: 'flex',
+                  gap: 10,
+                  alignItems: 'center',
+                }}
+                onClick={() => router.back()}
+              >
+                <IconArrowLeft size={16} />
+                <Text size={14} weight='bold'>
+                  Kembali
+                </Text>
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                background: '#fff',
+                padding: 36,
+                borderRadius: 16,
+                flexDirection: 'column',
                 gap: 16,
               }}
             >
-              <TextInput
-                withAsterisk
-                required
-                label='Nama Lengkap'
-                placeholder='Masukkan nama lengkap kamu'
-                {...form.getInputProps('name')}
-              />
-              <NumberInput
-                withAsterisk
-                required
-                label='Nomor Induk Mahasiswa ( NIM )'
-                placeholder='Masukkan NIM kamu'
-                {...form.getInputProps('nim')}
-              />
-              <TextInput
-                withAsterisk
-                required
-                label='Email'
-                placeholder='Masukkan email kamu'
-                styles={(theme) => ({
-                  input: {
-                    ':focus': {
-                      input: {
-                        borderColor:
-                          theme.colors.violet[theme.fn.primaryShade()],
-                      },
-                    },
-                  },
-                })}
-                {...form.getInputProps('email')}
-              />
-              <Select
-                required
-                label='Angkatan'
-                placeholder='Pilih tahun angkatan kamu'
-                data={[
-                  { value: 2019, label: '2019' },
-                  { value: 2020, label: '2020' },
-                  { value: 2021, label: '2021' },
-                  { value: 2022, label: '2022' },
-                  { value: 'Lainnya', label: 'Lainnya' },
-                ]}
-                {...form.getInputProps('year')}
-              />
-
-              <Box
-                sx={{
-                  display: 'flex',
+              <Text
+                weight='bold'
+                size={24}
+                sx={{ fontFamily: '__Lilita_One_4c05dc' }}
+              >
+                Daftar
+              </Text>
+              <form
+                onSubmit={form.onSubmit((values) => handleSubmit(values))}
+                style={{
                   flexDirection: 'column',
+                  display: 'flex',
                   gap: 16,
                 }}
               >
+                <TextInput
+                  withAsterisk
+                  required
+                  label='Nama Lengkap'
+                  placeholder='Masukkan nama lengkap kamu'
+                  {...form.getInputProps('name')}
+                />
+                <NumberInput
+                  withAsterisk
+                  required
+                  label='Nomor Induk Mahasiswa ( NIM )'
+                  placeholder='Masukkan NIM kamu'
+                  {...form.getInputProps('nim')}
+                />
+                <TextInput
+                  withAsterisk
+                  required
+                  label='Email'
+                  placeholder='Masukkan email kamu'
+                  styles={(theme) => ({
+                    input: {
+                      ':focus': {
+                        input: {
+                          borderColor:
+                            theme.colors.violet[theme.fn.primaryShade()],
+                        },
+                      },
+                    },
+                  })}
+                  {...form.getInputProps('email')}
+                />
+                <Select
+                  required
+                  label='Angkatan'
+                  placeholder='Pilih tahun angkatan kamu'
+                  data={[
+                    { value: 2019, label: '2019' },
+                    { value: 2020, label: '2020' },
+                    { value: 2021, label: '2021' },
+                    { value: 2022, label: '2022' },
+                    { value: 'Lainnya', label: 'Lainnya' },
+                  ]}
+                  {...form.getInputProps('year')}
+                />
+
                 <Box
                   sx={{
                     display: 'flex',
-                    alignItems: isSmall ? 'start' : 'center',
-                    gap: isSmall ? 8 : 0,
-                    justifyContent: 'space-between',
-                    flexDirection: isSmall ? 'column' : 'row',
+                    flexDirection: 'column',
+                    gap: 16,
                   }}
                 >
-                  <Text size={14} weight={500}>
-                    Upload bukti pembayaran
-                  </Text>
-                  <Button
-                    fullWidth={isSmall}
-                    variant='light'
-                    radius='xl'
-                    sx={{ fontSize: 12 }}
-                    onClick={() => setModalOpened(true)}
-                    color='violet'
-                  >
-                    Cara Pembayaran
-                  </Button>
-                </Box>
-
-                {!isLoading && paymentProofUrl ? (
                   <Box
                     sx={{
                       display: 'flex',
-                      alignItems: 'center',
+                      alignItems: isSmall ? 'start' : 'center',
+                      gap: isSmall ? 8 : 0,
                       justifyContent: 'space-between',
-                      flexDirection: 'column',
-                      gap: 16,
+                      flexDirection: isSmall ? 'column' : 'row',
                     }}
                   >
-                    <Image
-                      src={paymentProofUrl as string}
-                      alt='Payment proof'
-                      sx={{ maxWidth: 200 }}
-                    />
+                    <Text size={14} weight={500}>
+                      Upload bukti pembayaran
+                    </Text>
                     <Button
                       fullWidth={isSmall}
-                      color='red'
                       variant='light'
                       radius='xl'
                       sx={{ fontSize: 12 }}
-                      onClick={() => setPaymentProofUrl(null)}
+                      onClick={() => setModalOpened(true)}
+                      color='violet'
                     >
-                      Hapus
+                      Cara Pembayaran
                     </Button>
                   </Box>
-                ) : (
-                  <FileUpload
-                    loading={isLoading}
-                    onDrop={(files: FileWithPath[]) => {
-                      setError('');
-                      uploadImage(files[0]);
-                    }}
-                    onReject={() => setError('File tidak didukung')}
-                  />
-                )}
-                {error && (
-                  <Text size={12} color='red'>
-                    {error}
-                  </Text>
-                )}
-              </Box>
 
-              <Checkbox
-                required
-                mt='md'
-                color='violet'
-                label={`Saya setuju dengan syarat dan ketentuan yang berlaku`}
-                {...form.getInputProps('termsOfService', { type: 'checkbox' })}
-              />
+                  {!isLoading && paymentProofUrl ? (
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        flexDirection: 'column',
+                        gap: 16,
+                      }}
+                    >
+                      <Image
+                        src={paymentProofUrl as string}
+                        alt='Payment proof'
+                        sx={{ maxWidth: 200 }}
+                      />
+                      <Button
+                        fullWidth={isSmall}
+                        color='red'
+                        variant='light'
+                        radius='xl'
+                        sx={{ fontSize: 12 }}
+                        onClick={() => setPaymentProofUrl(null)}
+                      >
+                        Hapus
+                      </Button>
+                    </Box>
+                  ) : (
+                    <FileUpload
+                      loading={isLoading}
+                      onDrop={(files: FileWithPath[]) => {
+                        setError('');
+                        uploadImage(files[0]);
+                      }}
+                      onReject={() => setError('File tidak didukung')}
+                    />
+                  )}
+                  {error && (
+                    <Text size={12} color='red'>
+                      {error}
+                    </Text>
+                  )}
+                </Box>
 
-              <Group position='center' mt='md'>
-                <Button
-                  radius='xl'
-                  variant='light'
-                  type='submit'
-                  disabled={!form.isValid() || paymentProofUrl === null}
+                <Checkbox
+                  required
+                  mt='md'
                   color='violet'
-                  loading={isLoading}
-                >
-                  Daftar
-                </Button>
-              </Group>
-            </form>
+                  label={
+                    <Text>
+                      Saya setuju dengan{' '}
+                      <Anchor href='/#faq' target='_blank'>
+                        syarat dan ketentuan
+                      </Anchor>{' '}
+                      yang berlaku
+                    </Text>
+                  }
+                  {...form.getInputProps('termsOfService', {
+                    type: 'checkbox',
+                  })}
+                />
+
+                <Group position='center' mt='md'>
+                  <Button
+                    radius='xl'
+                    variant='light'
+                    type='submit'
+                    disabled={!form.isValid() || paymentProofUrl === null}
+                    color='violet'
+                    loading={isLoading}
+                  >
+                    Daftar
+                  </Button>
+                </Group>
+              </form>
+            </Box>
           </Box>
         </Box>
       </Jumbotron>

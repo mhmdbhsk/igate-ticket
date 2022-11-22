@@ -1,8 +1,9 @@
 import { ThemeIcon } from '@/assets';
 import FAQ from '@/components/FAQ';
 import Jumbotron from '@/components/Jumbotron';
+import faqConfigs from '@/configs/faq-configs';
 import { NextComponentWithSeo } from '@/types/next-page-with-seo';
-import { Box, Button, Text } from '@mantine/core';
+import { Box, Button } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { useRouter } from 'next/router';
 import Tilt from 'react-parallax-tilt';
@@ -63,6 +64,7 @@ const Home: NextComponentWithSeo<HomeProps> = () => {
               radius='xl'
               color='violet'
               onClick={() => router.push('/register')}
+              sx={{ fontFamily: '__Lilita_One_4c05dc' }}
             >
               Daftar
             </Button>
@@ -70,7 +72,7 @@ const Home: NextComponentWithSeo<HomeProps> = () => {
         </Box>
       </Jumbotron>
 
-      {/* <FAQ /> */}
+      <FAQ data={faqConfigs} />
     </Box>
   );
 };

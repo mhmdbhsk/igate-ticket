@@ -82,12 +82,6 @@ const theme: MantineThemeOverride = {
     },
     body: {
       ...theme.fn.fontStyles(),
-      // backgroundColor:
-      //   theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
-      // color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
-      minHeight: '100vh',
-      backgroundImage: 'url(/images/BackgroundLayer.png)',
-      backgroundRepeat: 'no-repeat',
     },
   }),
 };
