@@ -55,7 +55,7 @@ export default function FAQ({ data }: FAQProps) {
         sx={{ fontFamily: '__Lilita_One_4c05dc' }}
         id='faq'
       >
-        Pertanyaan Yang Sering Diajukan
+        Frequently Asked Questions
       </Title>
 
       <Accordion
