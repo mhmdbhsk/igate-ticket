@@ -1,4 +1,4 @@
-import { AppProps } from 'next/app';
+import NextApp, { AppContext, AppProps } from 'next/app';
 import Head from 'next/head';
 import { MantineProvider } from '@mantine/core';
 import Layout from '@/components/Layout';
@@ -27,6 +27,7 @@ export default function App(props: ExtendedAppProps) {
           name='viewport'
           content='minimum-scale=1, initial-scale=1, width=device-width'
         />
+        <link rel='shortcut icon' href='/favicon.svg' />
       </Head>
 
       <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
@@ -47,3 +48,10 @@ export default function App(props: ExtendedAppProps) {
     </>
   );
 }
+
+App.getInitialProps = async (appContext: AppContext) => {
+  const appProps = await NextApp.getInitialProps(appContext);
+  return {
+    ...appProps,
+  };
+};

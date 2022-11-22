@@ -57,7 +57,7 @@ const faqConfigs = [
       </Box>
     ),
   },
-  { id: 7, question: 'Dresscode yang digunakan', answer: 'Yo ndak tau' },
+  { id: 7, question: 'Dresscode yang digunakan', answer: 'Formal atau Batik' },
 ];
 
 export default faqConfigs;

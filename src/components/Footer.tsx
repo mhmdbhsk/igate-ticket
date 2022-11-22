@@ -49,21 +49,21 @@ export default function Footer() {
               <InstagramIcon />
             </ActionIcon>
           </Tooltip>
-          <Tooltip label='Narahubung 1'>
+          <Tooltip label='Narahubung 1 ( Bima )'>
             <ActionIcon
               size='lg'
               component='a'
-              href='https://wa.me/62'
+              href='https://wa.me/6285265588042'
               target='_blank'
             >
               <WhatsAppIcon />
             </ActionIcon>
           </Tooltip>
-          <Tooltip label='Narahubung 2'>
+          <Tooltip label='Narahubung 2 ( Tiara )'>
             <ActionIcon
               size='lg'
               component='a'
-              href='https://wa.me/62'
+              href='https://wa.me/6282166464195'
               target='_blank'
             >
               <WhatsAppIcon />
