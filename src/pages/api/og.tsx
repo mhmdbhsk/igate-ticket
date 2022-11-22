@@ -1,5 +1,5 @@
 import { LogoIcon } from '@/assets';
-import { BackgroundImage, Box, Text } from '@mantine/core';
+import { Text } from '@mantine/core';
 import { ImageResponse } from '@vercel/og';
 
 export const config = {
@@ -14,7 +14,7 @@ export default function handler(req: any, res: any) {
 
   return new ImageResponse(
     (
-      <Box>
+      <div>
         <LogoIcon />
         <div
           style={{
@@ -29,7 +29,7 @@ export default function handler(req: any, res: any) {
           {name && <Text>{name}</Text>}
           {name && <Text>{ticket_id}</Text>}
         </div>
-      </Box>
+      </div>
     ),
     {
       width: 1200,
