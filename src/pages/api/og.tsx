@@ -14,12 +14,7 @@ export default function handler(req: any, res: any) {
 
   return new ImageResponse(
     (
-      <BackgroundImage
-        component={Box}
-        src='/images/BackgroundLayer.png'
-        h='100%'
-        sx={{ width: '100vw' }}
-      >
+      <Box>
         <LogoIcon />
         <div
           style={{
@@ -34,7 +29,7 @@ export default function handler(req: any, res: any) {
           {name && <Text>{name}</Text>}
           {name && <Text>{ticket_id}</Text>}
         </div>
-      </BackgroundImage>
+      </Box>
     ),
     {
       width: 1200,
