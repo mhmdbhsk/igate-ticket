@@ -22,6 +22,7 @@ export default function App(props: ExtendedAppProps) {
   return (
     <>
       <Head>
+        <link rel='preload' href='/images/BackgroundLayer.jpg' as='image' />
         <title>Page title</title>
         <meta
           name='viewport'
