@@ -42,7 +42,12 @@ export default function Footer() {
           <LogoIcon />
         </Box>
         <Group spacing={0} className={classes.links} position='right' noWrap>
-          <ActionIcon size='lg'>
+          <ActionIcon
+            size='lg'
+            component='a'
+            href='https://www.instagram.com/igate.2022/'
+            target='_blank'
+          >
             <IconBrandInstagram size={18} stroke={1.5} />
           </ActionIcon>
         </Group>
