@@ -28,6 +28,8 @@ const Ticket: NextComponentWithSeo<TicketProps> = ({ ticket, title }) => {
   const { isMedium } = useWindowSize();
   const imgUrl = `https://${process.env.NEXT_PUBLIC_APP_URL}/api/og?title=${title}?name=${ticket.fields.name}?id=${ticket.fields.id}`;
 
+  console.log(ticket);
+
   return (
     <Box>
       <Head>

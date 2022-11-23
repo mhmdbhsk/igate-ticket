@@ -1,7 +1,7 @@
 import { MantineThemeOverride } from '@mantine/core';
 
 const theme: MantineThemeOverride = {
-  fontFamily: 'Inter',
+  fontFamily: '__Inter_9c9965',
   colors: {
     brand1: [
       '#ffe6ff',

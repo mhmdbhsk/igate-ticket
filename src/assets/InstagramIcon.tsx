@@ -4,7 +4,7 @@ const InstagramIcon = () => (
     width='24'
     height='24'
     viewBox='0 0 24 24'
-    style={{ fill: 'rgb(162, 162, 162)', transform: '', msFilter: '' }}
+    fill='rgb(162, 162, 162)'
   >
     <path d='M11.999 7.377a4.623 4.623 0 1 0 0 9.248 4.623 4.623 0 0 0 0-9.248zm0 7.627a3.004 3.004 0 1 1 0-6.008 3.004 3.004 0 0 1 0 6.008z'></path>
     <circle cx='16.806' cy='7.207' r='1.078'></circle>

@@ -9,6 +9,7 @@ import { NextComponentType, NextPageContext } from 'next';
 import theme from '@/styles/theme';
 import NextNProgress from 'nextjs-progressbar';
 import { Analytics } from '@vercel/analytics/react';
+import { Inter, Lilita_One } from '@next/font/google';
 
 type NextComponentWithSeo = NextComponentType<NextPageContext, any, {}> &
   Partial<NextPageWithSeo>;
@@ -17,11 +18,19 @@ type ExtendedAppProps<P = {}> = AppProps<P> & {
   Component: NextComponentWithSeo;
 };
 
+const lilita = Lilita_One({ weight: '400' });
+const inter = Inter({ subsets: ['latin'] });
+
 export default function App(props: ExtendedAppProps) {
   const { Component, pageProps } = props;
 
   return (
     <>
+      <style jsx global>{`
+        html {
+          font-family: ${inter.style.fontFamily} ${lilita.style.fontFamily};
+        }
+      `}</style>
       <Head>
         <link rel='preload' href='/images/background-layer.webp' as='image' />
         <meta

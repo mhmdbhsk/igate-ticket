@@ -1,14 +1,11 @@
 import { ReactNode } from 'react';
-import { Inter, Lilita_One, Secular_One } from '@next/font/google';
-import { Box, Container } from '@mantine/core';
+
+import { Box, clsx, Container } from '@mantine/core';
 import PageTransition from './PageTransition';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import Header from './Header';
+
 import CustomSeo from './CustomSeo';
 import Footer from './Footer';
-
-const inter = Inter();
-const lilita = Lilita_One({ weight: '400' });
 
 interface LayoutProps {
   children: ReactNode;
@@ -35,7 +32,6 @@ export default function Layout({ children, pageTitle }: LayoutProps) {
           minHeight: 'calc(100vh - 96px)',
           height: '100%',
         }}
-        className={(inter.className, lilita.className)}
       >
         <CustomSeo title={pageTitle} />
         {/* <Header /> */}

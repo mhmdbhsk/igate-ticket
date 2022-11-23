@@ -1,4 +1,3 @@
-import { ThemeIcon } from '@/assets';
 import FAQ from '@/components/FAQ';
 import Jumbotron from '@/components/Jumbotron';
 import faqConfigs from '@/configs/faq-configs';
@@ -38,10 +37,11 @@ const Home: NextComponentWithSeo<HomeProps> = () => {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+              transform: 'translateZ(100px)',
             }}
           >
             <Tilt
-              scale={1.1}
+              scale={1.05}
               transitionSpeed={2500}
               style={{
                 display: 'flex',
@@ -54,6 +54,7 @@ const Home: NextComponentWithSeo<HomeProps> = () => {
                 sx={{ borderRadius: 32 }}
               >
                 <Image
+                  alt='Ticket'
                   src={
                     smallScreen
                       ? '/images/vertical-ticket.webp'
