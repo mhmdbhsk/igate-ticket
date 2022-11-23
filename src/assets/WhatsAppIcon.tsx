@@ -4,7 +4,7 @@ const WhatsAppIcon = () => (
     width='24'
     height='24'
     viewBox='0 0 24 24'
-    style={{ fill: 'rgba(0, 0, 0, 1)', transform: '', msFilter: '' }}
+    style={{ fill: 'rgb(162, 162, 162)', transform: '', msFilter: '' }}
   >
     <path
       fill-rule='evenodd'

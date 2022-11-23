@@ -39,7 +39,7 @@ export default function Footer() {
           <LogoIcon />
         </Box>
         <Group spacing={0} position='right' noWrap>
-          <Tooltip label='Instagram I-Gate 2022'>
+          <Tooltip label='Instagram I-Gate 2022' sx={{ fontSize: 12 }}>
             <ActionIcon
               size='lg'
               component='a'
@@ -49,7 +49,7 @@ export default function Footer() {
               <InstagramIcon />
             </ActionIcon>
           </Tooltip>
-          <Tooltip label='Narahubung 1 ( Bima )'>
+          <Tooltip label='Narahubung 1 ( Bima )' sx={{ fontSize: 12 }}>
             <ActionIcon
               size='lg'
               component='a'
@@ -59,7 +59,7 @@ export default function Footer() {
               <WhatsAppIcon />
             </ActionIcon>
           </Tooltip>
-          <Tooltip label='Narahubung 2 ( Tiara )'>
+          <Tooltip label='Narahubung 2 ( Tiara )' sx={{ fontSize: 12 }}>
             <ActionIcon
               size='lg'
               component='a'

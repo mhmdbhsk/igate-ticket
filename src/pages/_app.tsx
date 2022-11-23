@@ -23,7 +23,7 @@ export default function App(props: ExtendedAppProps) {
   return (
     <>
       <Head>
-        <link rel='preload' href='/images/BackgroundLayer.jpg' as='image' />
+        <link rel='preload' href='/images/background-layer.webp' as='image' />
         <meta
           name='viewport'
           content='minimum-scale=1, initial-scale=1, width=device-width'
