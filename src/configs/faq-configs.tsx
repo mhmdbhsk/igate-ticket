@@ -34,11 +34,13 @@ const faqConfigs = [
         <List.Item>
           Kita buka online ticketing via https://igate.hmif-undip.com/
         </List.Item>
-        <List.Item>Bisa mulai dengan masuk ke halaman "Daftar".</List.Item>
         <List.Item>
-          Tekan tombol "Cara Pembayaran" pada form dan akan tampil pop up yang
-          berisi keterangan metode pembayaran dan daftar rekening yang bisa
-          digunakan untuk pembayaran
+          Bisa mulai dengan masuk ke halaman &apos;Daftar&apos;.
+        </List.Item>
+        <List.Item>
+          Tekan tombol &apos;Cara Pembayaran&apos; pada form dan akan tampil pop
+          up yang berisi keterangan metode pembayaran dan daftar rekening yang
+          bisa digunakan untuk pembayaran
         </List.Item>
         <List.Item>
           Lakukan pembayaran dan konfirmasi dengan cara mengirimkan bukti
