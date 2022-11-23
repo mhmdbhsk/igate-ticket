@@ -33,7 +33,9 @@ interface RegisterProps {}
 const Register: NextPageWithSeo = ({}: RegisterProps) => {
   const { isSmall } = useWindowSize();
   const theme = useMantineTheme();
-  const [modalOpened, setModalOpened] = useState<boolean>(false);
+  const [modalOpened, setModalOpened] = useState<
+    'payment-method' | 'terms-condition' | null
+  >(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [paymentProofUrl, setPaymentProofUrl] = useState<string | null>(null);
   const [error, setError] = useState<string>('');
@@ -80,7 +82,7 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
       const res = await PhotoService.uploadImage(data);
       if (res) {
         setPaymentProofUrl(res.url);
-        setModalOpened(false);
+        setModalOpened(null);
         setIsLoading(false);
       }
     } catch (error) {
@@ -125,8 +127,8 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
   return (
     <Box>
       <Modal
-        opened={modalOpened}
-        onClose={() => setModalOpened(false)}
+        opened={modalOpened === 'payment-method'}
+        onClose={() => setModalOpened(null)}
         title={<Text weight='bold'>Cara Pembayaran</Text>}
         centered
         overlayColor={theme.colors.gray[2]}
@@ -192,6 +194,35 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
               />
             </Box>
           </List.Item>
+        </List>
+      </Modal>
+
+      <Modal
+        opened={modalOpened === 'terms-condition'}
+        onClose={() => setModalOpened(null)}
+        title={<Text weight='bold'>Syarat dan Ketentuan</Text>}
+        centered
+        overlayColor={theme.colors.gray[2]}
+        overlayOpacity={0.55}
+        overlayBlur={3}
+        radius='lg'
+      >
+        <List type='ordered' size='xs'>
+          <List.Item>
+            Tidak diperbolehkan membawa benda tajam dan barang-barang berbahaya
+            lainnya.
+          </List.Item>
+          <List.Item>Tidak diperbolehkan menggunakan sandal.</List.Item>
+          <List.Item>Tidak diperbolehkan membawa vape atau rokok.</List.Item>
+          <List.Item>Dilarang membawa obat-obatan terlarang.</List.Item>
+          <List.Item>Dilarang membawa senjata api atau petasan.</List.Item>
+          <List.Item>Tidak diperbolehkan membawa minuman keras.</List.Item>
+          <List.Item>Dilarang membawa alat tulis.</List.Item>
+          <List.Item>Tidak diperbolehkan membawa laser pointer.</List.Item>
+          <List.Item>Dilarang membawa drone.</List.Item>
+          <List.Item>Dilarang membawa botol minum atau tumblr. </List.Item>
+          <List.Item>Dilarang membawa noise speaker. </List.Item>
+          <List.Item>Dilarang membawa hewan peliharaan. </List.Item>
         </List>
       </Modal>
 
@@ -339,7 +370,7 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
                       variant='light'
                       radius='xl'
                       sx={{ fontSize: 12 }}
-                      onClick={() => setModalOpened(true)}
+                      onClick={() => setModalOpened('payment-method')}
                       color='violet'
                     >
                       Cara Pembayaran
@@ -396,7 +427,13 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
                   label={
                     <Text>
                       Saya setuju dengan{' '}
-                      <Anchor href='/#faq' target='_blank'>
+                      <Anchor
+                        component='button'
+                        onClick={(e: any) => {
+                          e.stopPropagation();
+                          setModalOpened('terms-condition');
+                        }}
+                      >
                         syarat dan ketentuan
                       </Anchor>{' '}
                       yang berlaku

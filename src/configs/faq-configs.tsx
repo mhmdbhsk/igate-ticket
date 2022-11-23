@@ -1,4 +1,4 @@
-import { Box } from '@mantine/core';
+import { Box, List } from '@mantine/core';
 
 const faqConfigs = [
   {
@@ -29,32 +29,45 @@ const faqConfigs = [
     id: 5,
     question:
       'Aku ingin sekali membeli tiket I-GATE, tapi tata cara pembayarannya seperti apa ya?',
-    answer:
-      'Bisa mulai dengan masuk ke halaman daftar, kemudian tekan tombol "cara pembayaran" pada form dan akan tampil pop up yang berisi keterangan metode pembayaran dan daftar rekening yang bisa digunakan untuk pembayaran. Lakukan pembayaran dan konfirmasi pembayaran dengan cara mengirimkan bukti pembayaran ke form yang ada',
+    answer: (
+      <List type='ordered' size='xs'>
+        <List.Item>
+          Kita buka online ticketing via https://igate.hmif-undip.com/
+        </List.Item>
+        <List.Item>Bisa mulai dengan masuk ke halaman "Daftar".</List.Item>
+        <List.Item>
+          Tekan tombol "Cara Pembayaran" pada form dan akan tampil pop up yang
+          berisi keterangan metode pembayaran dan daftar rekening yang bisa
+          digunakan untuk pembayaran
+        </List.Item>
+        <List.Item>
+          Lakukan pembayaran dan konfirmasi dengan cara mengirimkan bukti
+          pembayaran ke form yang ada.
+        </List.Item>
+      </List>
+    ),
   },
   {
     id: 6,
     question: 'Do and Donts!',
     answer: (
-      <Box>
-        <ol>
-          <li>
-            Tidak diperbolehkan membawa benda tajam dan barang-barang berbahaya
-            lainnya.
-          </li>
-          <li>Tidak diperbolehkan menggunakan sandal.</li>
-          <li>Tidak diperbolehkan membawa vape atau rokok.</li>
-          <li>Dilarang membawa obat-obatan terlarang.</li>
-          <li>Dilarang membawa senjata api atau petasan.</li>
-          <li>Tidak diperbolehkan membawa minuman keras.</li>
-          <li>Dilarang membawa alat tulis.</li>
-          <li>Tidak diperbolehkan membawa laser pointer.</li>
-          <li>Dilarang membawa drone.</li>
-          <li>Dilarang membawa botol minum atau tumblr. </li>
-          <li>Dilarang membawa noise speaker. </li>
-          <li>Dilarang membawa hewan peliharaan. </li>
-        </ol>
-      </Box>
+      <List type='ordered' size='xs'>
+        <List.Item>
+          Tidak diperbolehkan membawa benda tajam dan barang-barang berbahaya
+          lainnya.
+        </List.Item>
+        <List.Item>Tidak diperbolehkan menggunakan sandal.</List.Item>
+        <List.Item>Tidak diperbolehkan membawa vape atau rokok.</List.Item>
+        <List.Item>Dilarang membawa obat-obatan terlarang.</List.Item>
+        <List.Item>Dilarang membawa senjata api atau petasan.</List.Item>
+        <List.Item>Tidak diperbolehkan membawa minuman keras.</List.Item>
+        <List.Item>Dilarang membawa alat tulis.</List.Item>
+        <List.Item>Tidak diperbolehkan membawa laser pointer.</List.Item>
+        <List.Item>Dilarang membawa drone.</List.Item>
+        <List.Item>Dilarang membawa botol minum atau tumblr. </List.Item>
+        <List.Item>Dilarang membawa noise speaker. </List.Item>
+        <List.Item>Dilarang membawa hewan peliharaan. </List.Item>
+      </List>
     ),
   },
   { id: 7, question: 'Dresscode yang digunakan', answer: 'Formal atau Batik' },
