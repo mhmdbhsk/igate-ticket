@@ -9,6 +9,7 @@ import {
   Box,
   Button,
   Checkbox,
+  Code,
   Group,
   Image,
   List,
@@ -22,11 +23,10 @@ import {
 import { FileWithPath } from '@mantine/dropzone';
 import { useForm } from '@mantine/form';
 import { useRouter } from 'next/router';
-
 import { IconArrowLeft } from '@tabler/icons';
-
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import CopyButton from '@/components/CopyButton';
 
 interface RegisterProps {}
 
@@ -135,24 +135,62 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
         radius='lg'
       >
         <Text size={14} sx={{ marginBottom: 4 }}>
-          Kirim pembayaran sebesar <b>Rp. 35.000,-</b>
-          ke nomor/rekening yang tertera di bawah ini
+          Kirim pembayaran sebesar <Code color='violet'>Rp. 35.000</Code> ke
+          nomor/rekening yang tertera di bawah ini
         </Text>
 
         <List size='sm'>
           <List.Item>
-            <Text>Mandiri No rekening : 1260010227527 a.n Salsabila Tuada</Text>
+            <Text>
+              Mandiri No rekening : <CopyButton value='1260010227527' /> a.n
+              Salsabila Tuada
+            </Text>
           </List.Item>
           <List.Item>
-            <Text>Dana ( 089648297621 ) a.n Salsabila Tuada</Text>
-            <Image src='/images/method-dana.jpg' alt='Metode PembayaranDana' />
+            <Text>
+              Dana <CopyButton value='089648297621' /> a.n Salsabila Tuada
+            </Text>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '100%',
+                maxWidth: 380,
+              }}
+            >
+              <Image
+                width='75%'
+                src='/images/method-dana.jpg'
+                alt='Metode Pembayaran Dana'
+                styles={{
+                  imageWrapper: { display: 'flex', justifyContent: 'center' },
+                }}
+              />
+            </Box>
           </List.Item>
           <List.Item>
-            <Text>Shopeepay ( 089648297621 ) a.n Salsabila Tuada</Text>
-            <Image
-              src='/images/method-shopeepay.jpg'
-              alt='Metode PembayaranDana'
-            />
+            <Text>
+              Shopeepay <CopyButton value='089648297621' /> a.n Salsabila Tuada
+            </Text>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '100%',
+                maxWidth: 380,
+              }}
+            >
+              <Image
+                width='75%'
+                src='/images/method-shopeepay.jpg'
+                alt='Metode Pembayaran ShopeePay'
+                styles={{
+                  imageWrapper: { display: 'flex', justifyContent: 'center' },
+                }}
+              />
+            </Box>
           </List.Item>
         </List>
       </Modal>
