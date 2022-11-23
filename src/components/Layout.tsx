@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { Box, clsx, Container } from '@mantine/core';
+import { Box, Container } from '@mantine/core';
 import PageTransition from './PageTransition';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
@@ -26,7 +26,6 @@ export default function Layout({ children, pageTitle }: LayoutProps) {
 
       <Container
         size='lg'
-        px='xs'
         sx={{
           position: 'relative',
           minHeight: 'calc(100vh - 96px)',

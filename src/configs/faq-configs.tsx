@@ -11,31 +11,30 @@ const faqConfigs = [
     id: 2,
     question: 'Kapan dan dimana I-GATE diselenggarakan?',
     answer:
-      'I-GATE akan dilaksanakan pada hari sabtu, 17 Desember 2022 di Gedung Prof. Soedarto, S. H. Pastikan kamu segera datang untuk memeriahkan acara I-GATE karena banyak banget keseruan yang bisa kamu dapetin disini! I-GATE akan di buka mulai pukul 15.00. Jangan lupa dicatat ya!',
+      'I-GATE akan dilaksanakan pada hari Sabtu, 17 Desember 2022 di Gedung Prof. Soedarto, S.H. Pastikan kamu segera datang untuk meramaikan acara I-GATE karena banyak keseruan yang bisa kamu dapatkan di sini! I-GATE akan open gate mulai pukul 15.00 Jangan lupa untuk dicatat yaa!',
   },
   {
     id: 3,
-    question: 'Apa saja rangkaian acara yang akan diadakan I-GATE nanti?',
+    question: 'Di I-GATE ada apa aja sih?',
     answer:
-      'Banyak sekali rangkaian acara seru-seruan bareng yang sudah menunggu mulai dari penampilan tiap angkatan hingga penyerahan awarding.',
+      'Banyak sekali rangkaian acara seru-seruan bareng yang sudah menunggu mulai dari penampilan tiap angkatan, penyerahan awarding hingga puncak acara yang meriah.',
   },
   {
     id: 4,
     question: 'Emangnya harga tiket I-GATE itu berapa sih?',
     answer:
-      ' Tiketnya sendiri berharga 35k per orangnya. Tetapi, jangan khawatir! untuk harga tersebut sudah termasuk makanan dan minuman yang akan di sediakan saat acara berlangsung.',
+      'Harga tiketnya 35k per orang. Tapi jangan khawatir! Harga tersebut sudah termasuk makanan dan minuman yang akan disediakan selama acara berlangsung.',
   },
   {
     id: 5,
-    question:
-      'Aku ingin sekali membeli tiket I-GATE, tapi tata cara pembayarannya seperti apa ya?',
+    question: 'Bagaimana tata cara pembelian tiket online?',
     answer: (
       <List type='ordered' size='xs'>
         <List.Item>
           Kita buka online ticketing via https://igate.hmif-undip.com/
         </List.Item>
         <List.Item>
-          Bisa mulai dengan masuk ke halaman &apos;Daftar&apos;.
+          Bisa mulai dengan masuk ke halaman &apos;Beli Tiket&apos;.
         </List.Item>
         <List.Item>
           Tekan tombol &apos;Cara Pembayaran&apos; pada form dan akan tampil pop
@@ -51,6 +50,12 @@ const faqConfigs = [
   },
   {
     id: 6,
+    question: 'Kalau mau beli tiket langsung gimana?',
+    answer:
+      'Tiket offline tersedia terbatas di Kantin I-GATE depan E101 gedung FSM dan setelahnya akan ditanya biodata untuk pendataan.',
+  },
+  {
+    id: 7,
     question: 'Do and Donts!',
     answer: (
       <List type='ordered' size='xs'>
@@ -72,7 +77,7 @@ const faqConfigs = [
       </List>
     ),
   },
-  { id: 7, question: 'Dresscode yang digunakan', answer: 'Formal atau Batik' },
+  { id: 8, question: 'Dresscode yang digunakan', answer: 'Formal atau Batik' },
 ];
 
 export default faqConfigs;

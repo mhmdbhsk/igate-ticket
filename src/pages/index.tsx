@@ -99,13 +99,13 @@ const Home: NextComponentWithSeo<HomeProps> = () => {
         </Box>
       </Jumbotron>
 
-      <Grid>
+      {/* <Grid>
         <Grid.Col span={4}>
           <Text></Text>
         </Grid.Col>
         <Grid.Col span={4}></Grid.Col>
         <Grid.Col span={4}></Grid.Col>
-      </Grid>
+      </Grid> */}
 
       <Box mt={64}>
         <FAQ data={faqConfigs} />
