@@ -135,7 +135,8 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
         radius='lg'
       >
         <Text size={14} sx={{ marginBottom: 4 }}>
-          Kirim pembayaran ke nomor/rekening yang tertera di bawah ini
+          Kirim pembayaran sebesar <b>Rp. 35.000,-</b>
+          ke nomor/rekening yang tertera di bawah ini
         </Text>
 
         <List size='sm'>
