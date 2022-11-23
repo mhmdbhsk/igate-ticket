@@ -79,14 +79,21 @@ const Home: NextComponentWithSeo<HomeProps> = () => {
             }}
           >
             <Button
-              variant='light'
               size={'xl'}
               radius='xl'
-              color='violet'
               onClick={() => router.push('/register')}
               sx={{ fontFamily: '__Lilita_One_4c05dc' }}
+              styles={(theme) => ({
+                root: {
+                  background: theme.colors.brand6[4],
+                  color: theme.colors.brand5[1],
+                  ':hover': {
+                    background: theme.colors.brand6[6],
+                  },
+                },
+              })}
             >
-              Daftar
+              Beli Tiket
             </Button>
           </Box>
         </Box>
