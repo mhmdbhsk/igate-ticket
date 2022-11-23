@@ -8,6 +8,7 @@ import { NextPageWithSeo } from '@/types/next-page-with-seo';
 import { NextComponentType, NextPageContext } from 'next';
 import theme from '@/styles/theme';
 import NextNProgress from 'nextjs-progressbar';
+import { Analytics } from '@vercel/analytics/react';
 
 type NextComponentWithSeo = NextComponentType<NextPageContext, any, {}> &
   Partial<NextPageWithSeo>;
@@ -41,6 +42,7 @@ export default function App(props: ExtendedAppProps) {
               <DismissableToast />
               <NextNProgress color='#7950f2' />
               <Component {...pageProps} />
+              <Analytics />
             </Layout>
           </AnimatePresence>
         </LazyMotion>

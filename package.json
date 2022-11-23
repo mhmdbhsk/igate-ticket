@@ -28,6 +28,7 @@
     "@mantine/spotlight": "^5.8.2",
     "@next/font": "^13.0.4",
     "@tabler/icons": "^1.112.0",
+    "@vercel/analytics": "^0.1.5",
     "@vercel/og": "^0.0.20",
     "airtable": "^0.11.5",
     "axios": "^1.1.3",
