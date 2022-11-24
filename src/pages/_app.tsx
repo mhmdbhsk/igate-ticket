@@ -1,4 +1,4 @@
-import NextApp, { AppContext, AppProps } from 'next/app';
+import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { MantineProvider } from '@mantine/core';
 import Layout from '@/components/Layout';
@@ -61,10 +61,3 @@ export default function App(props: ExtendedAppProps) {
     </>
   );
 }
-
-App.getInitialProps = async (appContext: AppContext) => {
-  const appProps = await NextApp.getInitialProps(appContext);
-  return {
-    ...appProps,
-  };
-};

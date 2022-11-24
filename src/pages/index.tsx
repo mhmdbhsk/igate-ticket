@@ -4,6 +4,7 @@ import faqConfigs from '@/configs/faq-configs';
 import { NextComponentWithSeo } from '@/types/next-page-with-seo';
 import { Box, Button, Image } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
+import { GetStaticPropsContext } from 'next';
 import { useRouter } from 'next/router';
 import Tilt from 'react-parallax-tilt';
 
@@ -98,14 +99,6 @@ const Home: NextComponentWithSeo<HomeProps> = () => {
           </Box>
         </Box>
       </Jumbotron>
-
-      {/* <Grid>
-        <Grid.Col span={4}>
-          <Text></Text>
-        </Grid.Col>
-        <Grid.Col span={4}></Grid.Col>
-        <Grid.Col span={4}></Grid.Col>
-      </Grid> */}
 
       <Box mt={64}>
         <FAQ data={faqConfigs} />
