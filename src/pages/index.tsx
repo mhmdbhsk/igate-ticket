@@ -2,7 +2,7 @@ import FAQ from '@/components/FAQ';
 import Jumbotron from '@/components/Jumbotron';
 import faqConfigs from '@/configs/faq-configs';
 import { NextComponentWithSeo } from '@/types/next-page-with-seo';
-import { Box, Button, Grid, Image, Text } from '@mantine/core';
+import { Box, Button, Image } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { useRouter } from 'next/router';
 import Tilt from 'react-parallax-tilt';

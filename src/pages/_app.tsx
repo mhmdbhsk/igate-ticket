@@ -33,6 +33,8 @@ export default function App(props: ExtendedAppProps) {
       `}</style>
       <Head>
         <link rel='preload' href='/images/background-layer.webp' as='image' />
+        <link rel='preload' href='/images/ticket.webp' as='image' />
+        <link rel='preload' href='/images/vertical-ticket.webp' as='image' />
         <meta
           name='viewport'
           content='minimum-scale=1, initial-scale=1, width=device-width'
