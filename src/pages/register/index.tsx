@@ -144,6 +144,12 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
         <List size='sm'>
           <List.Item>
             <Text>
+              BCA No rekening : <CopyButton value='1772177997' /> a.n Axelliano
+              Rafael Situmeang
+            </Text>
+          </List.Item>
+          <List.Item>
+            <Text>
               Mandiri No rekening : <CopyButton value='1260010227527' /> a.n
               Salsabila Tuada
             </Text>
