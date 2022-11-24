@@ -1,4 +1,4 @@
-import { InstagramIcon, LogoIcon, WhatsAppIcon } from '@/assets';
+import { InstagramIcon, WhatsAppIcon } from '@/assets';
 import {
   createStyles,
   Container,
@@ -6,12 +6,8 @@ import {
   ActionIcon,
   Box,
   Tooltip,
+  Image,
 } from '@mantine/core';
-import {
-  IconBrandTwitter,
-  IconBrandYoutube,
-  IconBrandInstagram,
-} from '@tabler/icons';
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -36,7 +32,7 @@ export default function Footer() {
     <div className={classes.footer}>
       <Container size='sm' p='lg' className={classes.inner}>
         <Box sx={{ width: 100 }}>
-          <LogoIcon />
+          <Image src='/images/logo.webp' alt='Logo' width={100} height='100%' />
         </Box>
         <Group spacing={0} position='right' noWrap>
           <Tooltip label='Instagram I-Gate 2022' sx={{ fontSize: 12 }}>

@@ -1,7 +1,5 @@
-import { LogoIcon } from '@/assets';
 import { useWindowSize } from '@/hooks/useWindowSize';
-import theme from '@/styles/theme';
-import { Box, Container, Text } from '@mantine/core';
+import { Box, Container, Image } from '@mantine/core';
 import { useRouter } from 'next/router';
 
 export default function Header() {
@@ -24,7 +22,7 @@ export default function Header() {
           sx={{ width: 100, cursor: 'pointer' }}
           onClick={() => router.push('/')}
         >
-          <LogoIcon />
+          <Image src='/images/logo.webp' alt='Logo' width={100} height='100%' />
         </Box>
       </Container>
     </Box>

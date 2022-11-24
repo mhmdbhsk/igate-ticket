@@ -4,7 +4,6 @@ import faqConfigs from '@/configs/faq-configs';
 import { NextComponentWithSeo } from '@/types/next-page-with-seo';
 import { Box, Button, Image } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
-import { GetStaticPropsContext } from 'next';
 import { useRouter } from 'next/router';
 import Tilt from 'react-parallax-tilt';
 
