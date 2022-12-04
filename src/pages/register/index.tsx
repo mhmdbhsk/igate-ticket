@@ -200,6 +200,29 @@ const Register: NextPageWithSeo = ({}: RegisterProps) => {
               />
             </Box>
           </List.Item>
+          <List.Item>
+            <Text>
+              Gopay <CopyButton value='089648297621' /> a.n Salsabila Tuada
+            </Text>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: '100%',
+                maxWidth: 380,
+              }}
+            >
+              <Image
+                width='75%'
+                src='/images/method-gopay.png'
+                alt='Metode Pembayaran Gopay'
+                styles={{
+                  imageWrapper: { display: 'flex', justifyContent: 'center' },
+                }}
+              />
+            </Box>
+          </List.Item>
         </List>
       </Modal>
 
