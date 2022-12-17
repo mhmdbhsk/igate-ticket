@@ -2,7 +2,7 @@ import FAQ from '@/components/FAQ';
 import Jumbotron from '@/components/Jumbotron';
 import faqConfigs from '@/configs/faq-configs';
 import { NextComponentWithSeo } from '@/types/next-page-with-seo';
-import { Box, Button, Image } from '@mantine/core';
+import { Box, Button, Flex, Image } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { useRouter } from 'next/router';
 import Tilt from 'react-parallax-tilt';
@@ -51,8 +51,29 @@ const Home: NextComponentWithSeo<HomeProps> = () => {
             >
               <Box
                 w={{ base: 300, sm: 600, md: 800, lg: 900 }}
-                sx={{ borderRadius: 32 }}
+                sx={{
+                  borderRadius: 32,
+                  background: '#000',
+                  position: 'relative',
+                }}
               >
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    height: '100%',
+                    width: '100%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    zIndex: 99,
+                    color: 'white',
+                    fontWeight: 'bold',
+                    fontSize: 32,
+                  }}
+                >
+                  Penjualan Tiket Ditutup
+                </Box>
                 <Image
                   alt='Ticket'
                   src={
@@ -61,7 +82,11 @@ const Home: NextComponentWithSeo<HomeProps> = () => {
                       : '/images/ticket.webp'
                   }
                   styles={{
+                    image: {
+                      borderRadius: 32,
+                    },
                     imageWrapper: {
+                      opacity: 0.3,
                       boxShadow: '0 0 20px 0 rgba(0, 0, 0, 0.1)',
                     },
                   }}
@@ -83,6 +108,7 @@ const Home: NextComponentWithSeo<HomeProps> = () => {
               radius='xl'
               onClick={() => router.push('/register')}
               sx={{ fontFamily: '__Lilita_One_4c05dc' }}
+              disabled
               styles={(theme) => ({
                 root: {
                   background: theme.colors.brand6[4],
