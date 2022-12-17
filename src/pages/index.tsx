@@ -63,16 +63,21 @@ const Home: NextComponentWithSeo<HomeProps> = () => {
                     height: '100%',
                     width: '100%',
                     display: 'flex',
+                    flexDirection: 'column',
                     justifyContent: 'center',
                     alignItems: 'center',
                     textAlign: 'center',
                     zIndex: 99,
                     color: 'white',
-                    fontWeight: 'bold',
-                    fontSize: 32,
                   }}
                 >
-                  Penjualan Tiket Ditutup
+                  <span style={{ fontSize: 32, fontWeight: 'bold' }}>
+                    Penjualan Tiket Ditutup
+                  </span>
+                  <span style={{ fontSize: 16, width: '50%' }}>
+                    Tenang, kamu masih bisa menikmati keseruannya dengan membeli
+                    tiket on the spot di Prof. Soedarto
+                  </span>
                 </Box>
                 <Image
                   alt='Ticket'
